@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="createProg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authen" type="tns:authenUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="tmpProg" type="tns:AdProg" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="authenUser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="isAdmin" type="s:int" />
+        </s:sequence>
+        <s:attribute name="cpCode" type="s:string" />
+        <s:attribute name="name" type="s:string" />
+        <s:attribute name="pass" type="s:string" />
+      </s:complexType>
+      <s:complexType name="AdProg">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="progCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="content" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="sentStartDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="sentFinishDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="maxSms" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="alias" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="sentSchedule" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="exceptionDay" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="sentTimeZone" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="createdUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="createdDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="priority" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="sentType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="zoneList" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="catList" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="totalSub" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="gender" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="minYear" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="maxYear" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="job" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="income" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="processStatus" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="createProgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="createProgResult" type="tns:AdProg" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateProg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authen" type="tns:authenUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="tmpProg" type="tns:AdProg" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateProgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateProgResult" type="tns:AdProg" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteProg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authen" type="tns:authenUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="progCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteProgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteProgResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="uploadMsisdns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authen" type="tns:authenUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="progCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msisdns" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="uploadMsisdnsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uploadMsisdnsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDailyProgReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authen" type="tns:authenUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="catCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fromDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="toDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDailyProgReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDailyProgReportResult" type="tns:progReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="progReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="progSmsRecords" type="tns:progSmsRecord" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="status" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="progSmsRecord">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="date" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="mt1Success" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="mt2Success" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="progComplete" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="progCreate" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="progFinish" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="sms1Success" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="sms2Success" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getDailySmsReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authen" type="tns:authenUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="progCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="catCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fromDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="toDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDailySmsReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDailySmsReportResult" type="tns:smsReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="smsReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="smsRecords" type="tns:smsRecord" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="status" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="smsRecord">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="date" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="moReply" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="mt1Error" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="mt1NotSend" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="mt1Success" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="mt2Success" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="numOder" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="sms1Success" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="sms2Success" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="subUnReg" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getMonthProgReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authen" type="tns:authenUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="catCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="month" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMonthProgReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMonthProgReportResult" type="tns:progReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMonthSmsReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authen" type="tns:authenUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="progCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="catCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="month" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMonthSmsReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMonthSmsReportResult" type="tns:smsReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getYearProgReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authen" type="tns:authenUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="catCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="year" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getYearProgReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getYearProgReportResult" type="tns:progReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getYearSmsReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authen" type="tns:authenUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="progCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="catCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="year" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getYearSmsReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getYearSmsReportResult" type="tns:smsReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msgBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serviceID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="mtID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="cpID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMTResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="createProgSoapIn">
+    <wsdl:part name="parameters" element="tns:createProg" />
+  </wsdl:message>
+  <wsdl:message name="createProgSoapOut">
+    <wsdl:part name="parameters" element="tns:createProgResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateProgSoapIn">
+    <wsdl:part name="parameters" element="tns:updateProg" />
+  </wsdl:message>
+  <wsdl:message name="updateProgSoapOut">
+    <wsdl:part name="parameters" element="tns:updateProgResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteProgSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteProg" />
+  </wsdl:message>
+  <wsdl:message name="deleteProgSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteProgResponse" />
+  </wsdl:message>
+  <wsdl:message name="uploadMsisdnsSoapIn">
+    <wsdl:part name="parameters" element="tns:uploadMsisdns" />
+  </wsdl:message>
+  <wsdl:message name="uploadMsisdnsSoapOut">
+    <wsdl:part name="parameters" element="tns:uploadMsisdnsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDailyProgReportSoapIn">
+    <wsdl:part name="parameters" element="tns:getDailyProgReport" />
+  </wsdl:message>
+  <wsdl:message name="getDailyProgReportSoapOut">
+    <wsdl:part name="parameters" element="tns:getDailyProgReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDailySmsReportSoapIn">
+    <wsdl:part name="parameters" element="tns:getDailySmsReport" />
+  </wsdl:message>
+  <wsdl:message name="getDailySmsReportSoapOut">
+    <wsdl:part name="parameters" element="tns:getDailySmsReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMonthProgReportSoapIn">
+    <wsdl:part name="parameters" element="tns:getMonthProgReport" />
+  </wsdl:message>
+  <wsdl:message name="getMonthProgReportSoapOut">
+    <wsdl:part name="parameters" element="tns:getMonthProgReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMonthSmsReportSoapIn">
+    <wsdl:part name="parameters" element="tns:getMonthSmsReport" />
+  </wsdl:message>
+  <wsdl:message name="getMonthSmsReportSoapOut">
+    <wsdl:part name="parameters" element="tns:getMonthSmsReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="getYearProgReportSoapIn">
+    <wsdl:part name="parameters" element="tns:getYearProgReport" />
+  </wsdl:message>
+  <wsdl:message name="getYearProgReportSoapOut">
+    <wsdl:part name="parameters" element="tns:getYearProgReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="getYearSmsReportSoapIn">
+    <wsdl:part name="parameters" element="tns:getYearSmsReport" />
+  </wsdl:message>
+  <wsdl:message name="getYearSmsReportSoapOut">
+    <wsdl:part name="parameters" element="tns:getYearSmsReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMTSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMT" />
+  </wsdl:message>
+  <wsdl:message name="SendMTSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMTResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMTHttpPostIn">
+    <wsdl:part name="dest" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="msgBody" type="s:string" />
+    <wsdl:part name="contentType" type="s:string" />
+    <wsdl:part name="serviceID" type="s:string" />
+    <wsdl:part name="mtID" type="s:string" />
+    <wsdl:part name="cpID" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMTHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:portType name="JetNavSMSSoap">
+    <wsdl:operation name="createProg">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send MT message from CP to JETNAV</wsdl:documentation>
+      <wsdl:input message="tns:createProgSoapIn" />
+      <wsdl:output message="tns:createProgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateProg">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update ad program</wsdl:documentation>
+      <wsdl:input message="tns:updateProgSoapIn" />
+      <wsdl:output message="tns:updateProgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteProg">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete ad program</wsdl:documentation>
+      <wsdl:input message="tns:deleteProgSoapIn" />
+      <wsdl:output message="tns:deleteProgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="uploadMsisdns">
+      <wsdl:input message="tns:uploadMsisdnsSoapIn" />
+      <wsdl:output message="tns:uploadMsisdnsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDailyProgReport">
+      <wsdl:input message="tns:getDailyProgReportSoapIn" />
+      <wsdl:output message="tns:getDailyProgReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDailySmsReport">
+      <wsdl:input message="tns:getDailySmsReportSoapIn" />
+      <wsdl:output message="tns:getDailySmsReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMonthProgReport">
+      <wsdl:input message="tns:getMonthProgReportSoapIn" />
+      <wsdl:output message="tns:getMonthProgReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMonthSmsReport">
+      <wsdl:input message="tns:getMonthSmsReportSoapIn" />
+      <wsdl:output message="tns:getMonthSmsReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getYearProgReport">
+      <wsdl:input message="tns:getYearProgReportSoapIn" />
+      <wsdl:output message="tns:getYearProgReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getYearSmsReport">
+      <wsdl:input message="tns:getYearSmsReportSoapIn" />
+      <wsdl:output message="tns:getYearSmsReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMT">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send MT message from CP to JETNAV</wsdl:documentation>
+      <wsdl:input message="tns:SendMTSoapIn" />
+      <wsdl:output message="tns:SendMTSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="JetNavSMSHttpPost">
+    <wsdl:operation name="SendMT">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send MT message from CP to JETNAV</wsdl:documentation>
+      <wsdl:input message="tns:SendMTHttpPostIn" />
+      <wsdl:output message="tns:SendMTHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JetNavSMSSoap" type="tns:JetNavSMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createProg">
+      <soap:operation soapAction="http://tempuri.org/createProg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProg">
+      <soap:operation soapAction="http://tempuri.org/updateProg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProg">
+      <soap:operation soapAction="http://tempuri.org/deleteProg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uploadMsisdns">
+      <soap:operation soapAction="http://tempuri.org/uploadMsisdns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDailyProgReport">
+      <soap:operation soapAction="http://tempuri.org/getDailyProgReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDailySmsReport">
+      <soap:operation soapAction="http://tempuri.org/getDailySmsReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMonthProgReport">
+      <soap:operation soapAction="http://tempuri.org/getMonthProgReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMonthSmsReport">
+      <soap:operation soapAction="http://tempuri.org/getMonthSmsReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getYearProgReport">
+      <soap:operation soapAction="http://tempuri.org/getYearProgReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getYearSmsReport">
+      <soap:operation soapAction="http://tempuri.org/getYearSmsReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMT">
+      <soap:operation soapAction="http://tempuri.org/SendMT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JetNavSMSSoap12" type="tns:JetNavSMSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createProg">
+      <soap12:operation soapAction="http://tempuri.org/createProg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProg">
+      <soap12:operation soapAction="http://tempuri.org/updateProg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProg">
+      <soap12:operation soapAction="http://tempuri.org/deleteProg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uploadMsisdns">
+      <soap12:operation soapAction="http://tempuri.org/uploadMsisdns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDailyProgReport">
+      <soap12:operation soapAction="http://tempuri.org/getDailyProgReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDailySmsReport">
+      <soap12:operation soapAction="http://tempuri.org/getDailySmsReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMonthProgReport">
+      <soap12:operation soapAction="http://tempuri.org/getMonthProgReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMonthSmsReport">
+      <soap12:operation soapAction="http://tempuri.org/getMonthSmsReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getYearProgReport">
+      <soap12:operation soapAction="http://tempuri.org/getYearProgReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getYearSmsReport">
+      <soap12:operation soapAction="http://tempuri.org/getYearSmsReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMT">
+      <soap12:operation soapAction="http://tempuri.org/SendMT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JetNavSMSHttpPost" type="tns:JetNavSMSHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="SendMT">
+      <http:operation location="/SendMT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JetNavSMS">
+    <wsdl:port name="JetNavSMSSoap" binding="tns:JetNavSMSSoap">
+      <soap:address location="http://brandname.gapit.com.vn/delivery/jetnavsms.asmx" />
+    </wsdl:port>
+    <wsdl:port name="JetNavSMSSoap12" binding="tns:JetNavSMSSoap12">
+      <soap12:address location="http://brandname.gapit.com.vn/delivery/jetnavsms.asmx" />
+    </wsdl:port>
+    <wsdl:port name="JetNavSMSHttpPost" binding="tns:JetNavSMSHttpPost">
+      <http:address location="http://brandname.gapit.com.vn/delivery/jetnavsms.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
